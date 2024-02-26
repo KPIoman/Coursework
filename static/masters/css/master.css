@@ -1,0 +1,223 @@
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.card {
+    background-color: rgba(153, 111, 0, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 2%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+@font-face {
+	font-family: raleway_f;
+	src: url('/static/masters/fonts/raleway-regular.woff2');
+}
+
+.profile-picture {
+    max-width: 30%;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.master-info {
+    display: flex;
+    align-items: flex-start; /* Align items to the start (top) of the container */
+    margin-bottom: 20px;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align text to the left */
+}
+
+.master-text strong {
+    font-family: 'raleway_f', sans-serif;
+    font-weight: 900;
+    font-size: 1.9em;
+    color: #FFFCDB;
+}
+
+.rating {
+    margin-top: 10px;
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #FF0000;
+}
+
+.specializations {
+    font-size: 1.2em;
+    margin-top: 20px;
+    text-align: left;
+    font-family: 'raleway_f', sans-serif;
+    color: #FF0000;
+    border: 2px solid #3498db;
+    border-radius: 10px;/* Blue border */
+    padding: 10px;
+}
+
+.specialization-item {
+    display: block;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    font-style: italic;
+    color: #FFFCDB;
+}
+
+.intro {
+    font-size: 1.1em;
+    margin-top: 20px;
+    text-align: left;
+    font-style: italic;
+    color: #FFFCDB;
+}
+
+.join-date {
+    font-size: 1.1em;
+    margin-top: 10px;
+    text-align: left;
+    font-style: italic;
+    color: #FFFCDB;
+}
+
+#appointment {
+    display: block;
+    text-align: left;
+    margin-top: 25px;
+}
+
+#appointment-button {
+    flex-grow: 1;
+    padding: 10px 20px;
+    --gradientShift: 50%;
+    background: linear-gradient(90deg, #8F5E25 0%, #FBF4A1 var(--gradientShift), #8F5E25 100%);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.3s;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+#appointment-button2 {
+    flex-grow: 1;
+    padding: 10px 20px;
+    --gradientShift: 50%;
+    background: linear-gradient(90deg, #8F5E25 0%, #FBF4A1 var(--gradientShift), #8F5E25 100%);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.3s;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+select {
+    width: 5%;
+    font-size: 17px;
+    padding: 8px;
+    margin-bottom: 40px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.styled-textarea {
+    padding: 30px 10px 10px;
+    background-color: transparent;
+    border: 2px solid #fcc23f;
+    border-radius: 5px;
+    width: 300px;
+    color: #eee;
+    font-size: 16px;
+    transition: all 0.2s ease;
+    z-index: -1000;
+}
+
+.styled-textarea::placeholder {
+    color: #fcc23f;
+    font-size: 17px;
+    transition: all 0.2s ease;
+}
+
+.styled-textarea:hover::placeholder {
+    font-size: 15px;
+    transform: translateY(-20px) translateZ(0);
+    opacity: 0.8;
+    z-index: 1000;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.floating-label {
+    position: absolute;
+    left: 10px; /* Adjust as needed */
+    top: 8px;
+    padding: 0 10px;
+    color: #fcc23f;
+    background-color: #0d1019;
+    transition: transform 0.2s ease, font-size 0.2s ease, top 0.2s ease;
+    z-index: 1;
+}
+
+.styled-textarea:focus + .floating-label {
+    top: 4px;
+    font-size: 15px;
+}
+.styled-textarea:not(:placeholder-shown) + .floating-label {
+    top: 4px;
+    font-size: 15px;
+}
+
+.reviews {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.review-item {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #FFC0CB;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    height: auto;
+    overflow: hidden;
+    width: calc(25% - 15px);
+    margin-right: 15px;
+}
+
+.review-rating {
+    font-weight: bold;
+}
+
+.review-content {
+    margin-top: 5px;
+    color: #333;
+}
+
+.no-reviews {
+    color: #333;
+    font-style: italic;
+}

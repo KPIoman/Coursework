@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Master GOLD'S Barberia
+{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'masters/css/master.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src={% static 'masters/js/master.js' %}></script>
+
+<div class="card">
+    <div class="master-info">
+        <img style="max-width: 30%" src="{{ MEDIA_URL }}{{ master.profile_picture }}" class="profile-picture" alt="Profile Picture">
+        <div class="text-container">
+            <div class="master-text">
+                <strong>{{ master.first_name }} {{ master.last_name }}</strong>
+                <div class="rating">Рейтинг - {{ master.get_rating }}</div>
+            </div>
+
+            <div class="specializations">
+                Спеціалізації:
+                {% for specialization in specializations %}
+                    <span class="specialization-item">{{ specialization }}</span>
+                {% endfor %}
+            </div>
+
+            <div class="intro">{{ master.intro|safe }}</div>
+
+            <div class="join-date">Працює у нас з {{ master.date_of_joining }}</div>
+
+            <div id="appointment">
+                <a href="{% url 'appointment' %}"><button id="appointment-button">Записатися до майстра</button></a>
+            </div>
+        </div>
+    </div>
+    {% if user.is_authenticated %}
+        <form method="post" action="">
+            {% csrf_token %}
+            <div>
+                <label>Рейтинг:</label>
+                <select name="rating">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5" selected>5</option>
+                </select>
+            </div>
+
+            <div class="input-container">
+                <textarea id="comment" name="content" placeholder="Коментар:" class="styled-textarea"></textarea>
+            </div>
+
+            <div id="appointment">
+                <a><button id="appointment-button2">Надіслати</button></a>
+            </div>
+        </form>
+    {% else %}
+        <a href="{% url 'register' %}" style="color: red;">Зареєструйтеся</a> або
+        <a href="{% url 'login' %}" style="color: red;">Увійдіть</a>, щоб мати змогу залишати коментарі
+    {% endif %}
+    <div class="reviews">
+        {% if master.reviews.all|length != 0 %}
+            {% for review in master.reviews.all %}
+                <div class="review-item">
+                    <div class="review-rating">Рейтинг: {{ review.rating }}/5</div>
+                    <div class="review-content">{{ review.content }}</div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="no-reviews">Ще ніхто не залишив відгук, будьте першим</div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Register barbershop
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href={% static 'main/css/register.css' %}>
+<script src={% static 'main/js/login.js' %}></script>
+
+
+<div class="container">
+    <div class="register-container">
+        <div class="circle circle-one"></div>
+        <div class="form-container">
+            <img src="/static/main/img/regpngyellow.png" alt="illustration" class="illustration" />
+            <h1 class="opacity">Реєстрація</h1>
+            <form action="" method="POST">
+                {% csrf_token %}
+
+                <input name="first_name" id="first_name" type="text" placeholder="Введіть ваше ім'я" class="your-name-class">
+                <input name="last_name" id="last_name" type="text" placeholder="Введіть ваше прізвище" class="your-surname-class">
+                <input name="email" id="email" type="text" autocomplete="email" placeholder="Введіть свій email" class="your-email-class">
+                <input name="password1" type="password" id="password1" autocomplete="new-password" placeholder="Введіть ваш пароль" class="your-password-class">
+                <input name="password2" type="password" id="password2" autocomplete="new-password" placeholder="Повторіть ще раз пароль" class="your-password-class">
+
+                <div class="form-group" id="signup-button">
+                    <button class="btn">Зареєструватися</button>
+                </div>
+
+                <div class="register-forget opacity">
+                    Вже маєш акаунт?
+                    <a href="{% url 'login' %}" style="color: rgba(0,255,255,0.93);">Увійти</a>
+                </div>
+            </form>
+        </div>
+        <div class="circle circle-two"></div>
+    </div>
+    <div class="theme-btn-container"></div>
+</div>
+
+<script>
+    const form = document.querySelector('form');
+    const password1 = document.querySelector('#password1');
+    const password2 = document.querySelector('#password2');
+    form.addEventListener('submit', function(evt) {
+        evt.preventDefault();
+        if(password1.value !== password2.value) {
+            alert('Введіть два ОДНАКОВИХ пароля');
+            return;
+        }
+
+        this.submit();
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Masters GOLD'S Barberia
+{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'masters/css/home.css' %}">
+
+    <div class="card">
+        <div class="masters-container">
+            {% for master in masters %}
+                <a href="{% url 'master_number' master.id %}{{ parameters }}">
+                    <div class="master-item">
+                        <img src="{{MEDIA_URL}}{{ master.profile_picture }}" alt="Master Image">
+                        <div class="master-details">
+                            <div class="master-name">{{ master.first_name }} {{ master.last_name }}</div>
+                            <div class="master-rating">{{ master.reviews.rating }}</div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

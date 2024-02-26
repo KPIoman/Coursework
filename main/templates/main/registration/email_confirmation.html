@@ -1,0 +1,12 @@
+<div id="custom-content">
+    <h1>Привіт, {{ name }}!</h1>
+    <p>Будь ласка, натисни на цю кнопку, щоб завершити твою реєстрацію:</p>
+    <div class="login-container">
+        <form>
+            <a href='http://{{ domain }}{% url 'activate' uid64=uid token=token %}'>
+                <button>Активація</button>
+            </a>
+        </form>
+    </div>
+</div>
+

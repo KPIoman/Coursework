@@ -1,0 +1,74 @@
+:root {
+    --index: calc(1vw + 1vh);
+    --transition: transform .75s cubic-bezier(.075, .5, 0, 1);
+}
+
+.services-container {
+    overflow: hidden;
+}
+
+.card {
+    background: linear-gradient(256deg, #0D2E27, #18453B 50%, #0D2E27);
+    border-radius: 15px;
+    padding: 30px;
+    margin: 50px 40px 35px;
+    box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.7);
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-around;
+    transition: transform 0.2s ease-in-out;
+}
+
+.services-item {
+    width: calc(30% - var(--index));
+    margin: calc(var(--index) * 2.28);
+    float: left;
+    text-align: center;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.services-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 8px 8px 28px rgba(0, 0, 0, 0.7);
+}
+
+.services-details {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    max-height: calc(30% - 2vw);
+    background-color: rgba(153, 111, 0, 0.8);
+    color: #FFFCDB;
+    font-weight: 900;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.services-details * {
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.services-name,
+.services-rating {
+    font-size: 20px;
+}
+
+/* Update --index based on viewport width and height */
+@media screen and (min-width: 720px) {
+    :root {
+        --index: calc(0.5vw + 0.5vh);
+    }
+}
+
+
+

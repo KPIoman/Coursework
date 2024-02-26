@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Service Barberia
+{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'services/css/home.css' %}">
+
+    <div class="card">
+        <div class="services-container">
+            {% for service in services %}
+                <a href="{% url 'service_number' service.id %}{{ parameters }}">
+                    <div class="services-item">
+                        <img src="{{MEDIA_URL}}{{ service.service_picture }}" alt="Services Image">
+                        <div class="services-details">
+                            <div class="services-name">{{ service.service_name }}</div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Login barbershop
+{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href={% static 'main/css/login.css' %}>
+    <script src={% static 'main/js/login.js' %}></script>
+
+    {{ context }}
+    <div class="container">
+        <div class="login-container">
+            <div class="circle circle-one"></div>
+            <div class="form-container">
+                <img src="/static/main/img/vintagebarberchairc.png" alt="illustration" class="illustration" />
+                <h1 class="opacity">Вхід</h1>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ next }}"/>
+
+                    <input name="email" id="email" type="text" autocomplete="email" placeholder="Введіть свій email" class="your-email-class">
+
+                    <input name="password" id="password" type="password" autocomplete="password" placeholder="Введіть пароль" class="your-password-class">
+
+                    <div class="form-group" id="signup-button">
+                        <button class="btn">Увійти</button>
+                    </div>
+
+                    <div class="register-forget opacity">
+                        <a href="{% url 'reset password' %}">Скинути</a>
+                        <a href="{% url 'register' %}">Зареєструватися</a>
+                    </div>
+                </form>
+            </div>
+            <div class="circle circle-two"></div>
+        </div>
+        <div class="theme-btn-container"></div>
+    </div>
+{% endblock %}

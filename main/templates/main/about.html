@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Barbershop About
+{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/about.css' %}">
+
+	<script src={% static 'main/libs/gsap/gsap.min.js' %} ></script>
+	<script src={% static 'main/libs/gsap/ScrollTrigger.min.js' %} ></script>
+	<script src={% static 'main/libs/gsap/ScrollSmoother.min.js' %} ></script>
+
+    <script src={% static 'main/js/about.js' %}></script>
+
+    <div class="wrapper">
+		<div class="content">
+
+			<section class="main-content">
+				<div class="layers">
+					<div class="layer__content">
+						<div class="layers__caption">Welcome to Barberia</div>
+						<div class="layers__title">GOLD'S Barberia</div>
+					</div>
+                    <div class="layer layers__base" style="background-image: url('/static/main/img/layer-base.png');"></div>
+                    <div class="layer layers__middle" style="background-image: url('/static/main/img/layer-middle.png');"></div>
+                    <div class="layer layers__front" style="background-image: url('/static/main/img/layer-front.png');"></div>
+                </div>
+            </section>
+
+            <article class="main-article" style="background-image: url('/static/main/img/dungeon.jpg');">
+                <div class="main-article__content">
+					<h2 class="main-article__content">Ваш вихід на шлях стилю та догляду!</h2>
+					<p class="main-article__paragraph">Історія: GOLD'S Barberia народився з любові до класичного мистецтва стрижки та чоловічого стилю. Наша історія почалася у 2015 році, коли наш засновник, випускник школи барберів і людина з глибоким естетичним смаком, вирішив створити простір, де чоловіки можуть насолоджуватися найвищим рівнем обслуговування та стилю.</p>
+                    <p class="main-article__paragraph">Досвід: Наші майстри – це справжні фахівці своєї справи. З роками досвіду та постійним професійним розвитком, вони готові задовольнити найвибагливіші запитання наших клієнтів. В GOLD'S Barberia ви можете впевнено віддати свій образ у руки справжніх професіоналів.</p>
+				</div>
+                <div class="copy">© ProGachi</div>
+            </article>
+
+        </div>
+    </div>
+{% endblock %}

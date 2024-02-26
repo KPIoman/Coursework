@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    GOLD'S Barberia
+{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href={% static 'main/css/home.css' %}>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:regular,italic,700,700italic" rel="stylesheet"/>
+    <script src={% static 'main/js/home.js' %}></script>
+
+<div class="wrapper">
+    <section class="parallax clearfix">
+        <div class="parallax__telo-container">
+            <div class="parallax__telo">
+                <div class="parallax__conteiner _conteiner">
+                    <div class="text-overlay">
+                        <div id="typed-text"></div>
+                        <div class="signup">
+                            <a href={% url 'appointment' %}><button id="signup-button">Запис</button></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="parallax__images images-parallax">
+                    <div class="images-parallax__item">
+                        <div class="images-parallax__money"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="price">
+        <video autoplay muted loop id="myVideo">
+            <source src="/static/main/img/price.mp4" type="video/mp4">
+        </video>
+        <div class="price__card _card">
+            <div class="main flow">
+                <h1 class="main__heading">Прайс лист</h1>
+                <div class="main__cards cards">
+                    <div class="cards__inner">
+                        {% for service in services %}
+                        <div class="cards__card card">
+                            <h2 class="card__heading">{{ service.service_name }}</h2>
+                            <p class="card__price">₴{{ service.price }}</p>
+                            <ul role="list" class="card__bullets flow">
+                                <li>{{ service.first_description }}</li>
+                                <li>{{ service.second_description }}</li>
+                                <li>{{ service.third_description }}</li>
+                            </ul>
+                            <a href="/services/{{ service.pk }}" class="card__cta cta">Запис</a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="overlay cards__inner"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

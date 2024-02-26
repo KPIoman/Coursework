@@ -1,0 +1,109 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Barbershop Contacts
+{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href={% static 'main/css/contacts.css' %}>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src={% static 'main/js/contacts.js' %}></script>
+    <div class="founder-card" onmousemove="handleMouseMove(event)" onmouseleave="handleMouseLeave(event)">
+        <div class="founder-content">
+            <div class="photo-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Lion-tailed_macaque_canine.jpg/220px-Lion-tailed_macaque_canine.jpg" alt="Founder Photo">
+            </div>
+            <h2>Пилипчук Андрій</h2>
+            <hr>
+            <h2>Тімлідер та<br>програміст</h2>
+            <p>Розробник серця<br>сайту та усього<br>функціоналу</p>
+            <div class="instagram-section">
+                <a href="https://www.instagram.com/haolinario/" target="_blank">
+                	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/30px-Instagram_logo_2022.svg.png" alt="Instagram Icon">
+                	<p>@haolinario</p>
+            	</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="founder-card" onmousemove="handleMouseMove(event)" onmouseleave="handleMouseLeave(event)">
+        <div class="founder-content">
+            <div class="photo-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Kuifmakaak_%288721744168%29.jpg" alt="Founder Photo">
+            </div>
+            <h2>Діденко Андрій</h2>
+            <hr>
+            <h2>Архітектор та<br>документатор</h2>
+            <p>Побудова архітектури,<br>та документування<br>всіх етапів роботи</p>
+            <div class="instagram-section">
+                <a href="https://t.me/andrdidko" target="_blank">
+                	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/30px-Telegram_2019_Logo.svg.png" alt="Instagram Icon">
+                	<p>@andrdidko</p>
+            	</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="founder-card" onmousemove="handleMouseMove(event)" onmouseleave="handleMouseLeave(event)">
+        <div class="founder-content">
+            <div class="photo-container">
+                <img src="https://static6.depositphotos.com/1030351/541/i/450/depositphotos_5413350-stock-photo-macaque-monkey.jpg" alt="Founder Photo">
+            </div>
+            <h2>Карпенко Андрій</h2>
+            <hr>
+            <h2>Аналітик та<br>дизайнер</h2>
+            <p>Аналітика вимог<br>та побудова<br>дизайну сайту</p>
+            <div class="instagram-section">
+                <a href="https://www.instagram.com/thoriys/" target="_blank">
+                	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/30px-Instagram_logo_2022.svg.png" alt="Instagram Icon">
+                	<p>@thoriys</p>
+            	</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="founder-card" onmousemove="handleMouseMove(event)" onmouseleave="handleMouseLeave(event)">
+        <div class="founder-content">
+            <div class="photo-container">
+                <img src="https://cdn.create.vista.com/api/media/small/367496692/stock-photo-long-tailed-macaque-sunrise-batur-volcano-bali" alt="Founder Photo">
+            </div>
+            <h2>Дем'янчук Владислав</h2>
+            <hr>
+            <h2>Тестувальник</h2>
+            <p>Тестування та<br>випробовування,<br>перевірка коректного<br>виконання,<br>виправлення багів</p>
+            <div class="instagram-section">
+                <a href="https://t.me/Pekpep" target="_blank">
+                	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/30px-Telegram_2019_Logo.svg.png" alt="Instagram Icon">
+                	<p>@Pekpep</p>
+            	</a>
+            </div>
+        </div>
+    </div>
+    <div id="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.5770776733157!2d30.450758076288476!3d50.44897778747017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cc27b30ec0d9%3A0x8d8273b3e3b4acca!2z0LLRg9C70LjRhtGPINCQ0LrQsNC00LXQvNGW0LrQsCDQr9C90LPQtdC70Y8sIDcsINCa0LjRl9CyLCAwMjAwMA!5e0!3m2!1suk!2sua!4v1700495426861!5m2!1suk!2sua"
+            width="100%" height="550" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        <div class="contact-container">
+            <div id="contact-info">
+                <h1>Контакти</h1>
+                <p class="contact-text">
+                    <img src="https://cdn.icon-icons.com/icons2/619/PNG/512/map-marker-point_icon-icons.com_56702.png" alt="Marker Image" width="23" height="25">
+                    <span style="color: red;">вулиця Академіка Янгеля, 7, Київ, Україна</span>
+                </p>
+                <p class="contact-text">
+                    <img src="https://cdn-icons-png.flaticon.com/512/81/81058.png" alt="Telephone Icon" width="23" height="25">+38 (095) 010-29-27
+                </p>
+                <p class="contact-text">
+                    <img src="https://cdn-icons-png.flaticon.com/512/646/646135.png" alt="Email Icon" width="25" height="25">golds.barberia@gmail.com
+                </p>
+                <p class="contact-text">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3239/3239945.png" alt="Working Hours Icon" width="24" height="24">8:00 - 18:00
+                </p>
+                <div id="signup">
+                    <a href={% url 'appointment' %}><button id="signup-button">Записатися</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'main/css/profile.css' %}">
+    <script src={% static 'main/js/login.js' %}></script>
+
+    <div class="glav-conteiner">
+        <h1 class="greeting">Вітаємо, {{ user.last_name }} {{ user.first_name }}!</h1>
+        <div class="container">
+
+            <div class="login-container">
+                <div class="circle circle-one"></div>
+                <div class="form-container">
+                    <form method="post">
+                        {% csrf_token %}
+                        <h3>Зміна пароля:</h3>
+                        <input name="old_password" type="password" id="old_password" placeholder="Ваш поточний пароль" oninput="passwordRequired()">
+                        <input name="new_password" type="password" id="new_password" placeholder="Ваш новий пароль" autocomplete="new-password" oninput="passwordRequired()">
+                        <input name="new_password_repeat" type="password" id="new_password_repeat" placeholder="Повторіть новий пароль" autocomplete="new-password" oninput="passwordRequired()">
+                        <button>Зберегти</button>
+                    </form>
+                </div>
+                <div class="circle circle-two"></div>
+            </div>
+
+            <div class="login-container">
+                <div class="circle circle-one"></div>
+                <div class="form-container">
+                    <form method="post">
+                        {% csrf_token %}
+                        <h3>Зміна особистих даних:</h3>
+                        <input name="first_name" type="text" id="first_name" placeholder="Ваше ім'я" maxlength="10">
+                        <input name="last_name" type="text" id="last_name" placeholder="Ваше прізвище" maxlength="10">
+                        {% if user.phone %}
+                            <input name="phone" type="text" id="phone" placeholder="Ваш новий номер телефону" oninput="validatePhoneNumber()">
+                            Ваш поточний телефон: <br>{{ user.phone }}
+                        {% else %}
+                            <input name="phone" type="text" id="phone" placeholder="Ваш номер телефону" oninput="validatePhoneNumber()">
+                        {% endif %}
+                        <button>Зберегти</button>
+                    </form>
+                </div>
+                <div class="circle circle-two"></div>
+            </div>
+
+            <div class="theme-btn-container"></div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.querySelector('form');
+        const old_password = document.querySelector('#old_password')
+        const new_password = document.querySelector('#new_password');
+        const new_password_repeat = document.querySelector('#new_password_repeat');
+        const phone = document.querySelector('#phone');
+        form.addEventListener('submit', function(evt) {
+        evt.preventDefault();
+        if (new_password.value !== new_password_repeat.value) {
+            alert('Введіть два ОДНАКОВИХ пароля');
+            return;
+        }
+
+        if (old_password.value === new_password.value && old_password.value !== '') {
+            alert('Твій старий і новий паролі збігаються');
+            return;
+        }
+
+        phone.style.border !== '1px solid red' ? this.submit() : alert('Введіть коректний номер телефону');
+        });
+
+        function passwordRequired() {
+            if (old_password.value !== '' || new_password.value !== '' || new_password_repeat.value !== '') {
+                old_password.required = true;
+                new_password.required = true;
+                new_password_repeat.required = true;
+            } else {
+                old_password.required = false;
+                new_password.required = false;
+                new_password_repeat.required = false;
+            }
+        }
+
+        function validatePhoneNumber() {
+            if (phone.value !== '') {
+                let re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+                if (re.test(phone.value)) {
+                    phone.style.border = '1px solid green';
+                } else {
+                    phone.style.border = '1px solid red';
+                }
+            } else {
+                phone.style.border = '1px solid black';
+            }
+        }
+
+    </script>
+{% endblock %}

@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Appointmen barbershop
+{% endblock %}
+
+{% block content %}
+    <script>
+        const checkbox1 = "{% static 'appointment/img/checkbox1.svg' %}";
+        const checkbox2 = "{% static 'appointment/img/checkbox2.svg' %}";
+        const information_png = "{% static 'appointment/img/information.png' %}";
+        const load_gif = "{% static 'appointment/img/load.gif' %}";
+        const phoneNumber = "{{ user.phone }}";
+        const CSRF = '{% csrf_token %}';
+        let masterNumber, serviceNumber, serviceTime;
+        {% if master %}
+            masterNumber = '{{ master.pk }}';
+        {% endif %}
+        {% if service %}
+            serviceNumber = '{{ service.pk }}';
+            serviceTime = parseInt('{{ service.service_time }}')
+        {% endif %}
+    </script>
+
+    <link rel="stylesheet" type="text/css" href={% static 'appointment/css/timeline.css' %}>
+    <link rel="stylesheet" type="text/css" href={% static 'appointment/css/choose.css' %}>
+    <link rel="stylesheet" type="text/css" href={% static 'appointment/css/style.css' %}>
+    <link rel="stylesheet" type="text/css" href={% static 'appointment/css/form.css' %}>
+    <link rel="stylesheet" type="text/css" href={% static 'appointment/css/calendar.css' %}>
+
+
+    <div id="main">
+        <div id="left">
+            <form method="post" action="">
+                {% csrf_token %}
+
+                <button id='master_button' data-href-template="{% url 'masters_api' %}"
+                        {% if not service %}style="border: red 1px solid"{% endif %} type="button"
+                        onclick="fetchInfo(this)">
+                    {% if master %}
+                        {{ master.first_name }} {{ master.last_name }}
+                    {% else %}
+                        Вибрати майстра
+                    {% endif %}
+                </button>
+                <input name="master" type="hidden" id="master_input">
+
+                <button id='service_button' data-href-template="{% url 'services_api' %}"
+                        {% if service %}style="border: red 1px solid"{% endif %} type="button"
+                        onclick="fetchInfo(this)">
+                    {% if service %}
+                        <div class="name">{{ service.service_name }}</div>
+                        <div class="services-price">₴{{ service.price }}</div>
+                    {% else %}
+                        Вибрати послугу
+                    {% endif %}
+                </button>
+                <input name="service" type="hidden" id="service_input">
+
+                <button id='date_button' data-href-template="{% url 'date_api' %}" type="button"
+                        onclick="fetchInfo(this)">Вибрати дату та час</button>
+                <input name="date" type="hidden" id="date_input">
+
+                {% if user.is_authenticated %}
+                    <div id="name_checkbox" onclick="checkboxChange(this)">
+                        <img src="{% static 'appointment/img/checkbox1.svg' %}" alt="">
+                        <text>Використати мої дані з акаунту</text>
+                    </div>
+
+                    <div style="display: none" id="name_form">
+                        <label for="firstname">Введіть своє ім'я</label>
+                        <input name="firstname" class="name" maxlength="30"><br>
+                        <label for="firstname">та прізвище</label>
+                        <input name="lastname" class="name" maxlength="30">
+                    </div>
+                {% else %}
+                    <div style="display: block" id="name_form">
+                        <label for="firstname">Введіть своє ім'я</label>
+                        <input name="firstname" class="name" required maxlength="30"><br>
+                        <label for="firstname">та прізвище</label>
+                        <input name="lastname" class="name" required maxlength="30">
+                    </div>
+                {% endif %}
+
+                <div id="home_service_checkbox" onclick="homeService()">
+                    <img src="{% static 'appointment/img/checkbox2.svg' %}" alt="Checkbox Image" id="home_service_checkbox_img">
+                    <span>Замовити майстра додому</span>
+                </div>
+
+                <div style="display: none" id="home_service_form">
+                    <label for="phone_input">Введіть свій телефон {% if user.phone %}(опціонально){% endif %}</label><br>
+                    <input id="phone_input" name="phone" class="home_service_input" oninput="validatePhoneNumber(this)">
+                    <input type="hidden" id="lat" name="lat">
+                    <input type="hidden" id="lng" name="lng">
+                    <input type="hidden" id="master_arrival_time" name="master_arrival_time" value="0">
+                </div>
+
+                <div id="comment_checkbox" onclick="checkboxChange(this)">
+                    <img src="{% static 'appointment/img/checkbox2.svg' %}" alt="">
+                    <text>Додати коментар</text>
+                </div>
+
+                <div style="display: none" id="comment_form">
+                    <textarea name="comment" class="comment" placeholder="Введіть ваш коментар тут..." maxlength="100"></textarea>
+                </div>
+
+                <div id="signup">
+                    <a><button id="signup-button">Надіслати</button></a>
+                </div>
+            </form>
+        </div>
+
+        <div id="right">
+            <img src="{% static 'appointment/img/load.gif' %}" id="load_gif">
+            <div id="right_content">
+                {% if masters %}
+                    {% for master_obj in masters %}
+                        <div class="choose"
+                                {% if master %}
+                                    {% if master.pk == master_obj.pk %}
+                                        style="border: red 1px solid"
+                                    {% endif %}
+                                {% endif %}>
+                            <div class="choose_name" onclick="selectChoice(this, 'master_button')" id="{{ master_obj.id }}">
+                                {{ master_obj.first_name }} {{ master_obj.last_name }}
+                            </div>
+                            <a href="{% url 'masters_home' %}{{ master_obj.pk }}" target='_blank'>
+                                <img src="{% static 'appointment/img/information.png' %}" class="information_png">
+                            </a>
+                        </div>
+                    {% endfor %}
+                {% elif service %}
+                    {% for service_obj in services %}
+                        <div class="choose"
+                                {% if service.pk == service_obj.pk %}
+                                    style="border: red 1px solid"
+                                {% endif %}>
+                            <div class="choose_name" onclick="selectChoice(this, 'service_button')" id="{{ service_obj.id }}">
+                                <div class="name">{{ service_obj.service_name }}</div>
+                                <div class="services-price">₴{{ service_obj.price }}</div>
+                            </div>
+                            <a href="{% url 'services_home' %}{{ service_obj.pk }}" target='_blank'>
+                                <img src="{% static 'appointment/img/information.png' %}" class="information_png">
+                            </a>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+
+        <div id="timeline" style="display: none">
+            <img src="/static/appointment/img/load.gif" id="load-timeline-gif">
+            <div id="slider">
+                <div id="draggable" style="left: 0; display: none" >
+                    <div class="master-drive-time"></div>
+                    <div class="master-drive-time"></div>
+                </div>
+            </div>
+            <div id="background">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src={% static 'appointment/js/form.js' %}></script>
+    <script src={% static 'appointment/js/timeline.js' %}></script>
+    <script src={% static 'appointment/js/hide.js' %}></script>
+    <script src={% static 'appointment/js/orderMasterHome.js' %}></script>
+    <script src={% static 'appointment/js/load.js' %}></script>
+    <script src={% static 'appointment/js/calendar.js' %}></script>
+
+{% endblock %}

@@ -1,0 +1,167 @@
+form {
+    background: linear-gradient(115deg, #8b6500, #ccac00, #8b6500);
+    border: 1px solid hsla(0, 0%, 65%, 0.158);
+    box-shadow: 0 0 36px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 2vw;
+    padding: 3%;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+}
+
+form input {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid hsla(0, 0%, 65%, 0.198);
+    box-shadow: 0 0 36px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 1vw;
+    letter-spacing: 0.8px;
+    font-size: 14px;
+    padding: 1%;
+    margin-bottom: 2%;
+    /*backdrop-filter: blur(500px);*/
+    -webkit-border-radius: 1vw;
+    -moz-border-radius: 1vw;
+    -ms-border-radius: 1vw;
+    -o-border-radius: 1vw;
+}
+
+/*form input:focus {*/
+/*    box-shadow: 0 0 16px 1px rgba(0, 0, 0, 0.2);*/
+/*    animation: wobble 0.3s ease-in;*/
+/*    -webkit-animation: wobble 0.3s ease-in;*/
+/*}*/
+
+form button[type='button'] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 7vh;
+    margin-bottom: 2%;
+    background-color: rgba(145, 145, 145, 0.02);
+    border: 1px solid black;
+    box-shadow: 0 0 36px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 1vw;
+    text-align: center;
+    /*letter-spacing: 0.8px;*/
+    /*backdrop-filter: blur(500px);*/
+    -webkit-border-radius: 1vw;
+    -moz-border-radius: 1vw;
+    -ms-border-radius: 1vw;
+    -o-border-radius: 1vw;
+}
+
+/*form button[type='button']:focus {*/
+/*    box-shadow: 0 0 16px 1px rgba(0, 0, 0, 0.2);*/
+/*    animation: wobble 0.3s ease-in;*/
+/*    -webkit-animation: wobble 0.3s ease-in;*/
+/*}*/
+
+form button[type='button'] .name {
+    text-align: center;
+    flex-grow: 1;
+}
+
+form button[type='button'] .services-price {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #7c0000;
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: bold;
+}
+
+#signup {
+    margin: 10px;
+    text-align: center;
+}
+
+#signup-button {
+    padding: 10px 20px;
+    width: 70%;
+    height: 6vh;
+    --gradientShift: 50%;
+    background: linear-gradient(115deg, #8F5E25 0%, #FBF4A1 var(--gradientShift), #8F5E25 100%);
+    border: 1px solid hsla(0, 0%, 65%, 0.158);
+    border-radius: 1vw;
+    margin: auto;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    /*transition: background 0.3s;*/
+}
+
+#name_checkbox, #home_service_checkbox, #comment_checkbox {
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2%;
+}
+
+#name_checkbox img, #home_service_checkbox img, #comment_checkbox img {
+    height: 70%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+textarea {
+    padding: 20px 10px 5px;
+    background-color: transparent;
+    border: 2px solid #fcc23f;
+    border-radius: 5px;
+    width: 92%;
+    color: #eee;
+    font-size: 16px;
+    /*transition: all 0.2s ease;*/
+    z-index: 1000;
+    resize: none;
+    position: relative;
+}
+
+textarea::placeholder {
+    color: #d00000;
+    font-size: 17px;
+    /*transition: all 0.2s ease;*/
+}
+
+textarea:hover::placeholder, textarea:focus::placeholder {
+    font-size: 15px;
+    /*transform: translateY(-20px) translateZ(0);*/
+    opacity: 0.8;
+    z-index: 1000;
+    /*transition: transform 0.2s ease, opacity 0.2s ease;*/
+}
+
+/*@keyframes wobble {*/
+/*  0% {*/
+/*    transform: scale(1.025);*/
+/*    -webkit-transform: scale(1.025);*/
+/*    -moz-transform: scale(1.025);*/
+/*    -ms-transform: scale(1.025);*/
+/*    -o-transform: scale(1.025);*/
+/*  }*/
+/*  25% {*/
+/*    transform: scale(1);*/
+/*    -webkit-transform: scale(1);*/
+/*    -moz-transform: scale(1);*/
+/*    -ms-transform: scale(1);*/
+/*    -o-transform: scale(1);*/
+/*  }*/
+/*  75% {*/
+/*    transform: scale(1.025);*/
+/*    -webkit-transform: scale(1.025);*/
+/*    -moz-transform: scale(1.025);*/
+/*    -ms-transform: scale(1.025);*/
+/*    -o-transform: scale(1.025);*/
+/*  }*/
+/*  100% {*/
+/*    transform: scale(1);*/
+/*    -webkit-transform: scale(1);*/
+/*    -moz-transform: scale(1);*/
+/*    -ms-transform: scale(1);*/
+/*    -o-transform: scale(1);*/
+/*  }*/
+/*}*/

@@ -1,0 +1,70 @@
+#calendar {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 25vw;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 2vh;
+    box-shadow: 0 6px 10px 0 rgba(0,0,0,0.4);
+    transition: all 0.3s ease-in-out;
+}
+
+#month_year {
+    text-align: center;
+    font-size: 1.5em;
+    color: #203a43;
+    background: linear-gradient(135deg, #18453B, #329da8);
+    padding: 10px 0;
+}
+
+#calendar td {
+    height: 6vh;
+    padding: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+#calendar tr {
+    overflow: hidden;
+}
+
+#calendar div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+}
+
+#calendar div button {
+    border: none;
+    border-radius: 1vh;
+    width: 60%;
+    height: 60%;
+    background: linear-gradient(135deg, #18453B, #329da8);
+    color: #f0f0f0;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+#calendar div button:active {
+    transform: scale(0.5);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+}
+
+.green, #first-month {
+    background: linear-gradient(135deg, #8F5E25 0%, #FBF4A1, #8F5E25 100%);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.red, #last-month {
+    background: linear-gradient(135deg, #ff8893, #ff6347);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+#first-month-cell div, #last-month-cell div {
+    width: 50%;
+    height: 80%;
+    border-radius: 2vh;
+}
