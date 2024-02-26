@@ -8,13 +8,22 @@
     <li><strong>Портфоліо</strong>: Адміністратор може додавати фото в портфоліо та редагувати інформацію про майстрів.</li>
     <li><strong>Google Calendar</strong>: При записі на послугу всі дані відправляються у календарі майстрів</li>
 </ul>
-<h2>Посилання</h2>
-<p>![main page screenshot](screenshots/main_page.png) <br> <a href="https://golds-barberia.onrender.com/">GOLD'S Barberia</a></p>
-<p>![appointment screenshot](screenshots/appointment.png) <br> <a href="https://golds-barberia.onrender.com/appointment/">Сторінка запису на послугу</a></p>
-<p>![masters screenshot](screenshots/masters.png)<br> 
-<a href="https://golds-barberia.onrender.com/masters/">Сторінка майстрів</a></p>
-<p>![services screenshot](screenshots/services.png)<br> 
-<a href="https://golds-barberia.onrender.com/appointment/">Сторінка послуг</a></p>
-<p>![admin page screenshot](screenshots/admin.png)</p>
-В адмінку сайта можна зайти через стандартний інтерфейс входу
-
+<h2>Скріншоти сторінок та посилання на них</h2>
+<p>
+    <h3>GOLD'S Barberia</h3>
+    <a href="https://golds-barberia.onrender.com/"><img src="/screenshots/main_page.png"></a>
+</p>
+<p>
+    <h3>Сторінка запису на послугу</h3>
+    <a href="https://golds-barberia.onrender.com/appointment/"><img src="screenshots/appointment.png"></a></p>
+<p>
+    <h3>Сторінка майстрів</h3>
+    <a href="https://golds-barberia.onrender.com/masters/"><img src="screenshots/masters.png"></a></p>
+<p>
+    <h3>Сторінка послуг</h3>
+    <a href="https://golds-barberia.onrender.com/appointment/"><img src="screenshots/services.png"></a></p>
+<p>
+    <h3>Адмінка сайту</h3>
+    <img src="screenshots/admin.png"> 
+    (на неї нема посилання, вхід до неї здійснюється через стандартний логін)
+</p>
